@@ -49,6 +49,15 @@ python -m pip install -r requirements.txt
 .venv/bin/python -m pytest
 ```
 
+## Run in Jenkins
+
+Add two Jenkins secret text credentials before running the pipeline:
+
+- `claroty-login-username`
+- `claroty-login-password`
+
+The pipeline uses the local Chrome binary at `/Applications/Google Chrome.app/Contents/MacOS/Google Chrome`, so the Jenkins agent should have Google Chrome installed at that path or you should update `BROWSER_EXECUTABLE_PATH` in [`Jenkinsfile`](/Users/doronnuni/Documents/Playground/Jenkinsfile).
+
 ## Configuration
 
 Environment variables supported in `.env`:
