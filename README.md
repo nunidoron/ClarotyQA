@@ -8,6 +8,12 @@ This project contains a Python + Playwright automated browser test suite for `ht
 - Login page visual capture
 - Empty form submission validation behavior
 - Invalid password validation behavior
+- Authenticated dashboard coverage
+- Primary navigation coverage
+- Devices cards and table views
+- Files repository page
+- User management users and groups views
+- Settings deployment, authentication, identity provider, and login page sections
 - HTML reporting
 - Full-page screenshots for each test
 - Failure screenshots captured automatically

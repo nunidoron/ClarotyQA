@@ -84,6 +84,22 @@ def page(context: BrowserContext) -> Page:
 
 
 @pytest.fixture()
+def authenticated_page(page: Page, settings: dict[str, str | bool]) -> Page:
+    username = str(settings["username"])
+    password = str(settings["password"])
+
+    assert username, "LOGIN_USERNAME is required for authenticated tests"
+    assert password, "LOGIN_PASSWORD is required for authenticated tests"
+
+    page.goto(f"{settings['base_url']}/login", wait_until="domcontentloaded")
+    page.get_by_placeholder("Username").fill(username)
+    page.get_by_placeholder("Password").fill(password)
+    page.get_by_role("button", name="Login").click()
+    page.wait_for_url(str(settings["base_url"]) + "/")
+    yield page
+
+
+@pytest.fixture()
 def screenshot_path(request: pytest.FixtureRequest) -> Callable[[str], Path]:
     test_name = request.node.name
 
